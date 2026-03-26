@@ -3,6 +3,12 @@
 *.pth
 *.onnx
 
+dataset/
+
+*.pkl
+*.zip
+*.csv
+
 __pycache__/
 *.py[cod]
 *$py.class

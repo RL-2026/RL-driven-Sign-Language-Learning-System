@@ -5,6 +5,7 @@
 
 dataset/
 
+*.npy
 *.pkl
 *.zip
 *.csv

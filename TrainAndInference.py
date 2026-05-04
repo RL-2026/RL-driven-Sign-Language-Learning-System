@@ -1,18 +1,16 @@
-import torch
 from stable_baselines3 import PPO
 from SignCorrectionEnv import SignCorrectionEnv
+import gymnasium as gym
 
-# 장치 설정
-device = "cuda" if torch.cuda.is_available() else "cpu"
+gym.envs.registration.register(
+    id='SignCorrection-v0',
+    entry_point='SignCorrectionEnv:SignCorrectionEnv',
+)
 
-# 환경 및 모델 초기화
-env = SignCorrectionEnv()
-model = PPO("MlpPolicy", env, verbose=1, device=device)
+env = gym.make('SignCorrection-v0')
+model = PPO("MlpPolicy", env, verbose=1, learning_rate=0.0003, n_steps=2048)
 
-# 학습 (최소 5만 번 이상 추천)
-print(f"{device} 장치에서 학습 시작...")
-model.learn(total_timesteps=50000)
-
-# 모델 저장
-model.save("sign_language_coach")
-print("학습 완료 및 모델 저장 성공!")
+print("🏋️‍♂️ [3단계] 지옥의 콤보 훈련 중... (2~5분 소요)")
+model.learn(total_timesteps=100000)
+model.save("sign_correction_ppo_model")
+print("✅ 코치 훈련 완료!")

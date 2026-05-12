@@ -6,6 +6,7 @@
 *.csv
 *.log
 *.png
+*.gif
 
 dataset/
 
@@ -17,6 +18,7 @@ dataset/
 __pycache__/
 *.py[cod]
 *$py.class
+*.npz
 
 venv/
 env/

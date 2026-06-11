@@ -1,9 +1,9 @@
-import numpy as np
 import os
+import numpy as np
 
 # 기존 처리된 데이터셋에서 고유 단어(Gloss)만 추출
-data_dir = "dataset_processed"
-gt_data = np.load(os.path.join(data_dir, "gt_sequences_ALL.npz"))
+data_dir = "../dataset_processed"
+gt_data = np.load(os.path.join(data_dir, "word_embeddings_ALL.npz"))
 
 # key 형식: "고민_NIA_SL_WORD0001..." -> 앞부분의 글로스만 추출
 allowed_glosses = set(k.split('_')[0] for k in gt_data.keys())
